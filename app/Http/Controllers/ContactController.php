@@ -11,10 +11,15 @@ class ContactController extends Controller
     {
         $sortField = $request->get('sort_field', 'id');
         $sortOrder = $request->get('sort_order', 'asc');
+        $search = $request->get('search', '');
 
-        $contacts = Contact::orderBy($sortField, $sortOrder)->get();
+        $contacts = Contact::query()
+            ->where('name', 'like', "%{$search}%")
+            ->orWhere('email', 'like', "%{$search}%")
+            ->orderBy($sortField, $sortOrder)
+            ->get();
 
-        return view('contacts.index', compact('contacts', 'sortField', 'sortOrder'));
+        return view('contacts.index', compact('contacts', 'sortField', 'sortOrder', 'search'));
     }
 
     public function create()

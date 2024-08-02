@@ -33,6 +33,6 @@
             <label for="address">Address</label>
             <textarea class="form-control" id="address" name="address" required>{{ old('address') }}</textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Create Contact</button>
+        <button type="submit" class="btn btn-secondary">Create Contact</button>
     </form>
 @endsection

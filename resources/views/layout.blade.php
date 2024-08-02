@@ -12,12 +12,18 @@
             <div class="container">
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav mx-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('contacts.index') }}">Contacts</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('contacts.create') }}">Create Contact</a>
-                        </li>
+                        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav mx-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link {{ request()->routeIs('contacts.index') ? 'active' : '' }}" href="{{ route('contacts.index') }}">Contacts</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link {{ request()->routeIs('contacts.create') ? 'active' : '' }}" href="{{ route('contacts.create') }}">Create Contact</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
                     </ul>
                 </div>
             </div>
