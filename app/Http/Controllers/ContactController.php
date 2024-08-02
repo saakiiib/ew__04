@@ -7,10 +7,14 @@ use App\Models\Contact;
 
 class ContactController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $contacts = Contact::all();
-        return view('contacts.index', compact('contacts'));
+        $sortField = $request->get('sort_field', 'id');
+        $sortOrder = $request->get('sort_order', 'asc');
+
+        $contacts = Contact::orderBy($sortField, $sortOrder)->get();
+
+        return view('contacts.index', compact('contacts', 'sortField', 'sortOrder'));
     }
 
     public function create()
